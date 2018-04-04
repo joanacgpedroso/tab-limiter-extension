@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Tab Limit",
+  "name": "Tab Limiter",
   "version": "1.0",
 
   "description": "Limits the number of tabs that can be open in a session",
@@ -18,5 +18,10 @@
     "<all_urls>",
     "tabs",
     "activeTab"
-  ]
+  ],
+  "browser_action": {
+    "browser_style": true,
+    "default_title": "Tab Limiter",
+    "default_popup": "popup.html"
+  }
 }
