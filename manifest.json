@@ -2,18 +2,7 @@
   "manifest_version": 2,
   "name": "Tab Limiter",
   "version": "1.0",
-
   "description": "Limits the number of tabs that can be open in a session",
-
-  "background": {
-    "scripts": ["background.js"]
-  },
-  "content_scripts": [
-      {
-          "matches": ["<all_urls>"],
-          "js": ["script.js"]
-      }
-  ],
   "permissions": [
     "<all_urls>",
     "tabs",
