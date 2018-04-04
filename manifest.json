@@ -13,7 +13,6 @@
   },
   "browser_action": {
     "browser_style": true,
-    "default_title": "Tab Limiter",
     "default_popup": "popup.html"
   }
 }
