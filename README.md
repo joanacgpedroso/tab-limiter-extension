@@ -12,6 +12,8 @@ This extension aims to correct that. Whenever the user tries to open more than a
 
 ## Usage
 
+## Features
+
 ## Credits
 
 (old extension, need to find it)
