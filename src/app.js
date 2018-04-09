@@ -53,3 +53,22 @@ function CloseTab(tabToClose) {
         console.log("Tab closed: ", tabToClose.id)
     }
 }
+
+browser.runtime.onStartup.addListener(Init);
+browser.runtime.onInstalled.addListener(Init);
+
+function Init() {
+    console.log("Initialize extension")
+    browser.storage.local.get()
+        .then((settingsValues) => {
+            //Max tabs
+            console.log("Max tabs: ", settingsValues.maxTabs);
+            if (!settingsValues.maxTabs) {
+                browser.storage.local.set({
+                    maxTabs: 5
+                })
+            }
+        })
+        .catch((error) => console.error(error))
+    console.log("Initialization complete")
+}
