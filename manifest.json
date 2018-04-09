@@ -6,9 +6,13 @@
   "permissions": [
     "<all_urls>",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
     "background": {
-    "scripts": ["background.js"]
+    "scripts": ["./src/app.js"]
+  },
+  "options_ui": {
+    "page": "./src/settings/settings.html"
   }
 }
