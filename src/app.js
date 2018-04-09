@@ -1,6 +1,10 @@
-browser.tabs.onCreated.addListener(ListenForTabCreation);
+browser.tabs.onCreated.addListener(function(tabCreated) {
+    let action = "Creation";
+    ListenForTabCreation(tabCreated, action);
+});
 
-function ListenForTabCreation(tabCreated) {
+function ListenForTabCreation(tabCreated, action) {
+    console.log(action);
     try {
         GetCurrentWindowTabs() // 01. Get open window tabs
             .then((tabs) => {
@@ -15,6 +19,7 @@ function ListenForTabCreation(tabCreated) {
                         if (tabsNumber > object.maxTabs ) {
                             // console.log("IsMaxTabs: true")
                             CloseTab(tabCreated); // 03.a) if true, close tab
+                            ShowDialog();
                         }
                     })
             })
@@ -71,4 +76,12 @@ function Init() {
         })
         .catch((error) => console.error(error))
     console.log("Initialization complete")
+}
+
+function ShowDialog() {
+    return browser.notifications.create({
+        type: 'basic',
+        title: 'Newly created tab was closed',
+        message: 'The newly created tab was closed because it exceeded the max number of tabs allowed per window. To change this number, go to the Options page of Tab Limiter.'
+    })
 }
