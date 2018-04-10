@@ -1,4 +1,6 @@
-browser.tabs.onCreated.addListener(function(tabCreated) {
+/* global browser */
+
+browser.tabs.onCreated.addListener(function (tabCreated) {
     let action = "Creation";
     ListenForTabCreation(tabCreated, action);
 });
@@ -16,39 +18,28 @@ function ListenForTabCreation(tabCreated, action) {
                 browser.storage.local.get("maxTabs") // 03. Check if tabs number is maxed
                     .then((object) => {
                         // console.log("IsMaxTabs: ", object)
-                        if (tabsNumber > object.maxTabs ) {
+                        if (tabsNumber > object.maxTabs) {
                             // console.log("IsMaxTabs: true")
                             CloseTab(tabCreated); // 03.a) if true, close tab
                             ShowDialog();
                         }
                     })
             })
-    } catch (error) { console.error(error); }
-};
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 //Get the current window tabs
 function GetCurrentWindowTabs() {
-    return browser.tabs.query({currentWindow: true});
+    return browser.tabs.query({
+        currentWindow: true
+    });
 }
 
 //Get the number of current window tabs
 function GetTabsNumber(tabs) {
     return tabs.length;
-}
-
-//Check if number of tabs is maxed or not
-function IsTabsMaxed(tabsNumber) {
-    GetMaxTabsSetting()
-        .then((object) => {
-            // console.log("IsMaxTabs: ", object)
-            if (tabsNumber > object.maxTabs ) {
-                // console.log("IsMaxTabs: true")
-                return true;
-            } else {
-                // console.log("IsMaxTabs: false")
-                return false;
-            }
-        })
 }
 
 //Close tab
