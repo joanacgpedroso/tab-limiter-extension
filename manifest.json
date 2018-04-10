@@ -11,7 +11,7 @@
     "notifications"
   ],
     "background": {
-    "scripts": ["./src/app.js"]
+    "scripts": ["./dist/background.js"]
   },
   "options_ui": {
     "page": "./src/settings/settings.html",

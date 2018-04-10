@@ -1,5 +1,7 @@
 /* global browser */
 
+// import { MaxTabs } from './settings/settings';
+
 browser.tabs.onCreated.addListener(function (tabCreated) {
   let action = 'Creation'
 
