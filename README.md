@@ -10,10 +10,14 @@ This extension aims to correct that. Whenever the user tries to open more than a
 
 ## Installation
 
+Go to [url] and install the extension.
+
 ## Usage
+
+You only need to have the extension activate for it to work. By default, the max number of open tabs allowed is 5 but you can change that number in the Options page of the plugin.
 
 ## Features
 
 ## Credits
-
+n
 (old extension, need to find it)
