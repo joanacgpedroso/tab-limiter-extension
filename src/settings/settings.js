@@ -29,7 +29,7 @@ function SaveSettings (event) {
   FillWithValues()
 }
 
-function MaxTabs (settingValue) {
+export function MaxTabs (settingValue) {
   let biggerThanZero = 0
   let maxTabs = defaultMaxTabs
 
