@@ -4,7 +4,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: {
     background: './src/app.js',
-    settings: './src/settings/settings.js'
+    options: './src/options/options.js'
   },
   output: {
     filename: '[name].js',
