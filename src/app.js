@@ -22,7 +22,7 @@ async function TabLimiter (tabCreated) {
     await DeleteTab(tabCreated)
     await ShowNotification(
       'Newly created tab was closed',
-      'The newly created tab was closed because it exceeded the max number of tabs allowed per window. To change this number, go to the Options page of Tab Limiter.'
+      'The newly created tab was closed because it exceeded the max number of tabs allowed per window.\nTo change this number, go to the Options page of Tab Limiter.'
     )
   }
 }
