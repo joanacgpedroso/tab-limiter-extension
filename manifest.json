@@ -16,5 +16,18 @@
   "options_ui": {
     "page": "./src/options/options.html",
     "browser_style": true
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "./dist/popup.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "./src/popup/popup.html"
+  ]
 }

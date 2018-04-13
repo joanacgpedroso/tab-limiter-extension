@@ -26,3 +26,14 @@ async function TabLimiter (tabCreated) {
     )
   }
 }
+
+async function SendMessage () {
+  let tab = await browser.tabs.query({currentWindow: true, active: true})
+  let tabId = tab[0].id
+  return browser.tabs.sendMessage(tabId, {
+    message: 'Tab created' // browser.extension.getURL('./popup/popup.html')
+  })
+}
+
+// setInterval(SendMessage, 2000)
+SendMessage()
