@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
   <form class="browser-style">
@@ -9,7 +10,6 @@
     <input type="number"id="maxTabs">
     <button type="submit" class="browser-style">Save</button>
   </form>
-
-  <script src="../../dist/options.js"></script>
+  <!-- Script added through webpack chunk -->
 </body>
 </html>
