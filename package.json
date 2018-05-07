@@ -23,6 +23,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "standard": "^11.0.1",
     "standard-loader": "^6.0.1",
     "webpack": "^4.5.0",
