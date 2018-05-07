@@ -12,6 +12,11 @@ This extension aims to correct that. Whenever the user tries to open more than a
 
 Go to [url] and install the extension.
 
+## Build
+
+For development: `npm run dev` 
+For production: `npm run prod`
+
 ## Usage
 
 You only need to have the extension activated for it to work. By default, the max number of open tabs allowed is 5 but you can change that number in the Options page.
