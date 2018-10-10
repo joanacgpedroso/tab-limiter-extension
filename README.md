@@ -10,7 +10,7 @@ This extension aims to correct that. Whenever the user tries to open more than a
 
 ## Installation
 
-Go to [url] and install the extension.
+Go to [Firefox Addon Page](https://addons.mozilla.org/en-US/firefox/addon/tab-limiter-extension/) and install the extension.
 
 ## Build
 
