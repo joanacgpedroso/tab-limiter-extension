@@ -11,14 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/JPedroso/tab-limiter-extension.git"
+    "url": "https://github.com/joanacgpedroso/tab-limiter-extension.git"
   },
   "author": "Joana Pedroso",
   "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/JPedroso/tab-limiter-extension/issues"
-  },
-  "homepage": "https://gitlab.com/JPedroso/tab-limiter-extension#README",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
