@@ -14,7 +14,7 @@ Go to [Firefox Addon Page](https://addons.mozilla.org/en-US/firefox/addon/tab-li
 
 ## Build
 
-For development: `npm run dev` 
+For development: `npm start` 
 For production: `npm run prod`
 
 ## Usage

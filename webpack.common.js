@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 // const ImageminPlugin = require('imagemin-webpack-plugin').default
 
@@ -14,7 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Options Page',
       filename: 'options/options.html',
@@ -38,7 +38,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015']
+              presets: ['@babel/preset-env']
             }
           },
           {

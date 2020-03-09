@@ -1,6 +1,6 @@
 import { GetMaxTabsSettings, SetMaxTabsSettings } from './../tabs'
 
-let form = document.querySelector('form')
+const form = document.querySelector('form')
 
 // Fill field with correct info when dom is loaded
 document.addEventListener('DOMContentLoaded', UpdateFieldValues)
@@ -15,7 +15,7 @@ export async function UpdateFieldValues () {
 
 export async function SaveSettings (event) {
   event.preventDefault()
-  let maxTabsFieldValue = form.querySelector('#maxTabs').value
+  const maxTabsFieldValue = form.querySelector('#maxTabs').value
   await SetMaxTabsSettings(maxTabsFieldValue)
   await UpdateFieldValues()
 }

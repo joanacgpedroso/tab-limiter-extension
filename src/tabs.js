@@ -1,5 +1,5 @@
 /* global browser */
-export let maxTabsDefault = 5
+export const maxTabsDefault = 2
 
 // Get the number of tabs in current window
 export function GetCurrentTabsNumber () {
@@ -13,8 +13,8 @@ export function GetCurrentTabsNumber () {
 
 // Compare number of tabs with max allowed
 export async function IsOverMaxTabsLimit () {
-  let currentTabsNumber = await GetCurrentTabsNumber()
-  let maxTabsAllowedNumber = await GetMaxTabsSettings()
+  const currentTabsNumber = await GetCurrentTabsNumber()
+  const maxTabsAllowedNumber = await GetMaxTabsSettings()
   return (currentTabsNumber > maxTabsAllowedNumber)
 }
 
