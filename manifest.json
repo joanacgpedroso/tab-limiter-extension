@@ -4,7 +4,6 @@
   "version": "1.0",
   "description": "Limits the number of tabs that can be open in a session",
   "permissions": [
-    "<all_urls>",
     "tabs",
     "activeTab",
     "storage",
