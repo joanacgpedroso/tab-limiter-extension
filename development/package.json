@@ -5,10 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "npm run build && web-ext lint",
-    "build": "webpack --mode development --config webpack.dev.js",
-    "watch": "npm run dev -- --watch",
+    "build": "webpack --mode production",
+    "watch": "npm run build -- --watch",
     "browser": "web-ext run",
-    "start": "npm-run-all --parallel watch browser"
+    "dev": "npm-run-all --parallel watch browser"
   },
   "repository": {
     "type": "git",

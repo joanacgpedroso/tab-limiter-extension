@@ -4,6 +4,7 @@ const RemovePlugin = require('remove-files-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
+  devtool: 'none',
   entry: {
     'background': './src/app.js',
     'options/options': './src/options/options.js'
