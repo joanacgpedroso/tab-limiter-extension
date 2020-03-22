@@ -4,12 +4,11 @@
   "description": "Tab Limiter is a Firefox extension that limits the number of tabs that can be open in a session, boosting your productivity.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development --config webpack.dev.js",
+    "test": "npm run build && web-ext lint",
+    "build": "webpack --mode development --config webpack.dev.js",
     "watch": "npm run dev -- --watch",
     "browser": "web-ext run",
-    "start": "npm-run-all --parallel watch browser",
-    "build": "webpack --mode production --config webpack.prod.js"
+    "start": "npm-run-all --parallel watch browser"
   },
   "repository": {
     "type": "git",
@@ -21,12 +20,11 @@
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "babel-core": "^6.26.0",
     "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "html-webpack-plugin": "^3.2.0",
     "npm-run-all": "^4.1.5",
+    "remove-files-webpack-plugin": "^1.4.0",
     "standard": "^14.3.3",
     "standard-loader": "^7.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",

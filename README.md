@@ -6,7 +6,7 @@ Tab Limiter is a Firefox extension that limits the number of tabs that can be op
 
 How many times have you been browsing the web when you find a link you're curious about? Instead of going to another page to read it, you open a new tab and continue on the same page. As you keep scrolling, more interesting pages keep being linked and more new tabs keep being opened. Before you noticed, there are 10+ tabs opened and you don't know which ones to check first so you close most of them.
 
-This extension aims to correct that. Whenever the user tries to open more than a certain number of tabs, the newly opened tab is automatically closed and to open it, you need to close another tab, which forces the user to decide which tabs are worth keeping opened.
+This extension aims to correct that. Whenever the user tries to open more than a certain number of tabs, the newly opened tab is automatically closed. To open it, you need to close another tab, which forces the user to decide which tabs are worth keeping open.
 
 ## Installation
 
@@ -14,8 +14,16 @@ Go to [Firefox Addon Page](https://addons.mozilla.org/en-US/firefox/addon/tab-li
 
 ## Build
 
-For development: `npm start` 
-For production: `npm run prod`
+`npm start`
+
+If it doesn't work, run this:
+
+To build the files and watch them: `npm run watch` 
+To run browser with the extension: `npm run browser` 
+
+# Production
+
+`npm run prod`
 
 ## Usage
 

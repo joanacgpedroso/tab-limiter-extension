@@ -1,8 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const RemovePlugin = require('remove-files-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-// const ImageminPlugin = require('imagemin-webpack-plugin').default
 
 module.exports = {
   entry: {
@@ -14,7 +13,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new RemovePlugin({
+      before: {
+        include: [
+          './dist'
+        ]
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'Options Page',
       filename: 'options/options.html',
@@ -24,10 +29,7 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: './src/assets/icons',
       to: 'assets/icons'
-    }])//,
-    // new ImageminPlugin({
-    //   test: /\.(jpe?g|png|gif|svg)$/i
-    // })
+    }])
   ],
   module: {
     rules: [
@@ -38,7 +40,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
+              plugins: ["@babel/transform-runtime"]
             }
           },
           {
