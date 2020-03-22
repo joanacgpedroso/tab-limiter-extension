@@ -2,26 +2,9 @@
 
 const maxTabsDefault = 5;
 
-// Get the number of tabs in current window
-function GetCurrentTabsNumber () {
-  return browser.tabs.query({
-    currentWindow: true
-  })
-    .then((tabs) => {
-      return tabs.length
-    })
-}
-
-// Compare number of tabs with max allowed
-async function IsOverMaxTabsLimit () {
-  const currentTabsNumber = await GetCurrentTabsNumber();
-  const maxTabsAllowedNumber = await GetMaxTabsSettings();
-  return (currentTabsNumber > maxTabsAllowedNumber)
-}
-
-// Delete a tab
-function DeleteTab (tab) {
-  return browser.tabs.remove(tab.id)
+// Initialize settings
+async function InitSettings () {
+  await MaxTabSettings();
 }
 
 // Initialize settings related with max tabs
@@ -51,9 +34,26 @@ function GetMaxTabsSettings () {
     .then((settingsValue) => settingsValue.maxTabs)
 }
 
-// Initialize settings
-async function InitSettings () {
-  await MaxTabSettings();
+// Get the number of tabs in current window
+function GetCurrentTabsNumber () {
+  return browser.tabs.query({
+    currentWindow: true
+  })
+    .then((tabs) => {
+      return tabs.length
+    })
+}
+
+// Compare number of tabs with max allowed
+async function IsOverMaxTabsLimit () {
+  const currentTabsNumber = await GetCurrentTabsNumber();
+  const maxTabsAllowedNumber = await GetMaxTabsSettings();
+  return (currentTabsNumber > maxTabsAllowedNumber)
+}
+
+// Delete a tab
+function DeleteTab (tab) {
+  return browser.tabs.remove(tab.id)
 }
 
 const notificationId = 'browser-notification';
@@ -61,7 +61,7 @@ const notificationId = 'browser-notification';
 function ShowNotification (title, message) {
   return browser.notifications.create(notificationId, {
     type: 'basic',
-    iconUrl: browser.extension.getURL('./dist/assets/icons/tab-icon-google.svg'),
+    iconUrl: browser.extension.getURL('./src/assets/icons/tab-icon-google.svg'),
     title: title,
     message: message
   })

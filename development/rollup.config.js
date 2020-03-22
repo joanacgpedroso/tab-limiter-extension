@@ -4,5 +4,4 @@ export default [{
         file: 'src/main.js',
         format: 'cjs'
     }
-
 }]
