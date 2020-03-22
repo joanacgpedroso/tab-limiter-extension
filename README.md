@@ -14,16 +14,8 @@ Go to [Firefox Addon Page](https://addons.mozilla.org/en-US/firefox/addon/tab-li
 
 ## Build
 
-`npm start`
-
-If it doesn't work, run this:
-
-To build the files and watch them: `npm run watch` 
-To run browser with the extension: `npm run browser` 
-
-# Production
-
-`npm run prod`
+1. `npm install`
+2. `npm run dev`
 
 ## Usage
 

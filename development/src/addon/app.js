@@ -1,5 +1,3 @@
-/* global browser */
-
 import { InitSettings } from './settings'
 import { IsOverMaxTabsLimit, DeleteTab } from './tabs'
 import { ShowNotification, CloseNotification } from './notifications'

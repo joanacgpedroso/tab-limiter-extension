@@ -1,4 +1,3 @@
-/* global browser */
 const notificationId = 'browser-notification'
 
 export function ShowNotification (title, message) {

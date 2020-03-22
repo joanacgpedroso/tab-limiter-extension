@@ -1,4 +1,3 @@
-/* global browser */
 export const maxTabsDefault = 5
 
 // Get the number of tabs in current window

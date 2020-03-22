@@ -10,10 +10,10 @@
     "notifications"
   ],
     "background": {
-    "scripts": ["./dist/background.js"]
+    "scripts": ["./src/main.js"]
   },
   "options_ui": {
-    "page": "./dist/options/options.html",
+    "page": "./src/options/index.html",
     "browser_style": true
   }
 }
