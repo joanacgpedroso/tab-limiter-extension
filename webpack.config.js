@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   optimization: {
@@ -15,6 +16,14 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/i,
+        use: [MiniCssExtractPlugin.loader]
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Options Page',
@@ -28,6 +37,10 @@ module.exports = {
         {
           from: './src/assets/icons',
           to: 'assets/icons'
+        }, 
+        {
+          from: './src/options/options.css',
+          to: 'options/options.css'
         }
       ]
     })

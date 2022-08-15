@@ -15,7 +15,9 @@ export async function UpdateFieldValues () {
 
 export async function SaveSettings (event) {
   event.preventDefault()
-  const maxTabsFieldValue = form.querySelector('#maxTabs').value
-  await SetMaxTabsSettings(maxTabsFieldValue)
-  await UpdateFieldValues()
+  if (validateMaxTabsInput()) {
+    const maxTabsFieldValue = form.querySelector('#maxTabs').value
+    await SetMaxTabsSettings(maxTabsFieldValue)
+    await UpdateFieldValues()
+  }
 }

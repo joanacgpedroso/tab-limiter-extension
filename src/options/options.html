@@ -6,17 +6,28 @@
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
+  <link rel="stylesheet" href="./options.css">
 </head>
 
 <body>
   <form>
-    <div class="browser-style">
-      <label for="maxTabs">Max Tabs:</label>
-      <input type="number" id="maxTabs" class="input"/>
+    <div class="inputGroup">
+      <label class="label" for="maxTabs">
+        Enter the max number of tabs:
+      </label>
+
+      <div class="stepper">
+        <button type="button" class="button button-ghost">-</button>
+        <input type="number" class="input stepperInput" id="maxTabs" />
+        <button type="button" class="button button-ghost">+</button>
+      </div>
+
     </div>
-    <button type="submit" class="browser-style">Save</button>
+    <div class="button">
+      <button type="submit" class="button button-primary">Save Changes</button>
     </div>
   </form>
+
 </body>
 
 </html>
