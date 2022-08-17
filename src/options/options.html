@@ -10,19 +10,30 @@
 </head>
 
 <body>
-  <form>
-    <div class="inputGroup">
+  <form data-valid="true">
+
+    <div class="inputGroup" data-input-group="maxTabs">
       <label class="label" for="maxTabs">
         Enter the max number of tabs:
       </label>
 
-      <div class="stepper">
-        <button type="button" class="button button-ghost">-</button>
+      <div class="stepper" data-element="stepper">
+        <button type="button" class="button button-ghost" data-stepper-button="decrease">-</button>
         <input type="number" class="input stepperInput" id="maxTabs" />
-        <button type="button" class="button button-ghost">+</button>
+        <button type="button" class="button button-ghost" data-stepper-button="increase">+</button>
+      </div>
+
+      <div class="error" data-element="error">
+        <span class="errorIcon">
+          !
+        </span>
+        <span class="errorText" data-error-element="text">
+          Error message here
+        </span>
       </div>
 
     </div>
+
     <div class="button">
       <button type="submit" class="button button-primary">Save Changes</button>
     </div>

@@ -5,6 +5,7 @@
 
 body {
     background-color: #ffffff;
+    padding: 4px;
 }
 
 .inputGroup {
@@ -18,12 +19,23 @@ body {
     color: #0c0c0d;
 }
 
-.input {
-    border-width: 1px;
-    border-radius: 2px;
+.error {
+    margin: 0px 16px;
+    display: none;
+}
+
+.errorIcon {
+    background-color: #d70022;
+    color: #ffffff;
+    display: inline-block;
     padding: 0px 8px;
-    height: 32px;
-    border-color: rgba(12, 12, 13, 0.2);
+    font-weight: bold;
+    margin-right: 4px;
+    border-radius: 100%;
+}
+
+.errorText {
+    color: #d70022;
 }
 
 .input {
@@ -37,9 +49,15 @@ body {
 .input:hover {
     border-color: rgba(12, 12, 13, 0.3)
 }
+
 .input:active {
     border-color: #0a84ff;
     box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);   
+}
+
+.input-error {
+    border-color: #d70022;
+    box-shadow: 0 0 0 1px #d70022, 0 0 0 4px rgba(251, 0, 34, 0.3);
 }
 
 .stepper {
@@ -62,6 +80,10 @@ body {
     max-width: 100%;
     border: 0;
     text-align: center;
+}
+
+.button:disabled {
+    opacity: 0.4;
 }
 
 .button-primary {
