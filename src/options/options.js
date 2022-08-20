@@ -1,3 +1,5 @@
+import "./styles.scss"
+
 import { ShowNotification } from '../notifications'
 import { GetMaxTabsSettings, SetMaxTabsSettings } from './../tabs'
 
@@ -94,7 +96,7 @@ stepper.querySelector('[data-stepper-button="decrease"').addEventListener("click
   const value = maxTabsInput.value
   if (isNumber(value) && value > 1) {
     maxTabsInput.value--
-    hideError()
+    validateMaxTabsInput()
   }
 })
 
@@ -102,7 +104,7 @@ stepper.querySelector('[data-stepper-button="increase"').addEventListener("click
   const value = maxTabsInput.value
   if (isNumber(value)) {
     maxTabsInput.value++
-    hideError()
+    validateMaxTabsInput()
   }
 })
 

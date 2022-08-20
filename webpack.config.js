@@ -9,7 +9,8 @@ module.exports = {
   },
   entry: {
     'background': './src/app.js',
-    'options/options': './src/options/options.js'
+    'options/options': './src/options/options.js',
+    'options/styles': './src/options/styles.scss'
   },
   output: {
     filename: '[name].js',
@@ -19,8 +20,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/i,
-        use: [MiniCssExtractPlugin.loader]
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
       }
     ]
   },
@@ -33,16 +38,14 @@ module.exports = {
       minify: false
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: './src/assets/icons',
-          to: 'assets/icons'
-        }, 
-        {
-          from: './src/options/options.css',
-          to: 'options/options.css'
-        }
-      ]
+      patterns: [{
+        from: './src/assets/icons',
+        to: 'assets/icons'
+      }]
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
   ],
 }

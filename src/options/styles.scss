@@ -1,0 +1,171 @@
+/**
+    Styles based on the Photon Design System for Firefox Products
+    Resource Link: https://design.firefox.com/photon/introduction/principles.html
+**/
+@mixin primary-colors {
+  --primary-bg-color: #0060df;
+  --primary-bg-hover-color: #003eaa;
+  --primary-bg-active-color: #002275;
+  --primary-focus-border-color: #0a84ff;
+  --primary-shadow-color: rgba(10 132 255 / 30%);
+}
+
+@mixin ghost-button-colors {
+  --ghost-button-icon-color: rgba(12 12 13 / 80%);
+  --ghost-button-bg-color: rgba(12 12 13 / 10%);
+  --ghost-button-bg-hover-color: rgba(12 12 13 / 20%);
+  --ghost-button-bg-active-color: rgba(12 12 13 / 30%);
+}
+
+@mixin error-colors {
+  --error-color: #d70022;
+  --error-shadow-color: rgba(251 0 34 / 30%);
+}
+
+@mixin input-colors {
+  --border-color: rgba(12 12 13 2%);
+  --border-hover-color: rgba(12 12 13 / 30%);
+}
+
+:root {
+  --white-color: #fff;
+  --black-color: #0c0c0d;
+
+  @include primary-colors;
+  @include ghost-button-colors;
+  @include error-colors;
+  @include input-colors;
+}
+
+body {
+  background-color: var(--white-color);
+  padding: 4px;
+}
+
+.input-group {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+
+  .label {
+    margin-right: 8px;
+    color: var(--black-color);
+  }
+}
+
+.error {
+  margin: 0 16px;
+  display: none;
+
+  .icon {
+    background-color: var(--error-color);
+    color: var(--white-color);
+    display: inline-block;
+    padding: 0 8px;
+    font-weight: bold;
+    margin-right: 4px;
+    border-radius: 100%;
+  }
+
+  .text {
+    color: var(--error-color);
+  }
+}
+
+.input {
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 0 8px;
+  height: 32px;
+  border-color: var(--border-color);
+
+  :hover {
+    border-color: var(--border-hover-color);
+  }
+
+  :active {
+    border-color: var(--primary-focus-border-color);
+    box-shadow:
+      0 0 0 1px var(--primary-focus-border-color),
+      0 0 0 4px var(--primary-shadow-color);
+  }
+}
+
+.input-error {
+  border-color: var(--error-color);
+  box-shadow:
+    0 0 0 1px var(--error-color),
+    0 0 0 4px var(--error-shadow-color);
+}
+
+.stepper {
+  display: flex;
+
+  .input {
+    text-align: center;
+    width: 50px;
+    z-index: 2;
+    /* stylelint-disable */
+    -moz-appearance: textfield;
+    /* stylelint-enable */
+  }
+}
+
+.button {
+  border-radius: 2px;
+  height: 32px;
+  padding: 8px 0;
+  font-size: 13px;
+  width: 132px;
+  max-width: 100%;
+  border: 0;
+  text-align: center;
+
+  :disabled {
+    opacity: 0.4;
+  }
+}
+
+.button-primary {
+  background-color: var(--primary-bg-color);
+  color: var(--white-color);
+
+  :hover {
+    background-color: var(--primary-bg-hover-color);
+  }
+
+  :active {
+    background-color: var(--primary-bg-active-color);
+  }
+
+  :focus {
+    box-shadow:
+      0 0 0 1px var(--primary-focus-border-color) inset,
+      0 0 0 1px var(--primary-focus-border-color),
+      0 0 0 4px var(--primary-shadow-color);
+  }
+}
+
+.button-ghost {
+  color: var(--ghost-button-icon-color);
+  width: 32px;
+  padding: 8px;
+  font-size: 16px;
+  line-height: 16px;
+
+  :hover {
+    background-color: var(--ghost-button-bg-hover-color);
+    color: red;
+  }
+
+  :active {
+    background-color: var(--ghost-button-bg-active-color);
+  }
+
+  :focus {
+    box-shadow:
+      0 0 0 1px var(--primary-focus-border-color) inset,
+      0 0 0 1px var(--primary-focus-border-color),
+      0 0 0 4px var(--primary-shadow-color);
+  }
+}
