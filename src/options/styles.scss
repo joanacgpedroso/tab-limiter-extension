@@ -79,11 +79,11 @@ body {
   height: 32px;
   border-color: var(--border-color);
 
-  :hover {
+  &:hover {
     border-color: var(--border-hover-color);
   }
 
-  :active {
+  &:active {
     border-color: var(--primary-focus-border-color);
     box-shadow:
       0 0 0 1px var(--primary-focus-border-color),
@@ -121,7 +121,7 @@ body {
   border: 0;
   text-align: center;
 
-  :disabled {
+  &:disabled {
     opacity: 0.4;
   }
 }
@@ -130,15 +130,15 @@ body {
   background-color: var(--primary-bg-color);
   color: var(--white-color);
 
-  :hover {
+  &:hover {
     background-color: var(--primary-bg-hover-color);
   }
 
-  :active {
+  &:active {
     background-color: var(--primary-bg-active-color);
   }
 
-  :focus {
+  &:focus {
     box-shadow:
       0 0 0 1px var(--primary-focus-border-color) inset,
       0 0 0 1px var(--primary-focus-border-color),
@@ -147,22 +147,22 @@ body {
 }
 
 .button-ghost {
+  background-color: var(--ghost-button-bg-color);
   color: var(--ghost-button-icon-color);
   width: 32px;
   padding: 8px;
   font-size: 16px;
   line-height: 16px;
 
-  :hover {
+  &:hover {
     background-color: var(--ghost-button-bg-hover-color);
-    color: red;
   }
 
-  :active {
+  &:active {
     background-color: var(--ghost-button-bg-active-color);
   }
 
-  :focus {
+  &:focus {
     box-shadow:
       0 0 0 1px var(--primary-focus-border-color) inset,
       0 0 0 1px var(--primary-focus-border-color),
