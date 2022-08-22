@@ -12,7 +12,10 @@
     "build": "webpack --mode production --stats-children",
     "watch": "npm run build -- --watch",
     "browser": "web-ext run",
-    "dev": "npm-run-all --parallel watch browser"
+    "dev": "npm-run-all --parallel watch browser",
+    "style-lint": "npx stylelint \"**/*.scss\"",
+    "js-lint": "npx eslint \"src/**/*.js\"",
+    "lint": "npm run style-lint & npm run js-lint"
   },
   "repository": {
     "type": "git",
@@ -23,13 +26,14 @@
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "eslint": "^8.22.0",
+    "eslint-config-hardcore": "^24.13.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "npm-run-all": "^4.1.5",
     "sass": "^1.54.4",
     "sass-loader": "^13.0.2",
     "stylelint": "^14.10.0",
-    "stylelint-config-standard": "^27.0.0",
     "stylelint-config-standard-scss": "^5.0.0",
     "web-ext": "^7.2.0",
     "webpack": "^5.74.0",

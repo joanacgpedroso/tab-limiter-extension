@@ -1,19 +1,20 @@
 /* global browser */
-const notificationId = 'browser-notification'
+const notificationId = "tab-limiter-notification"
+const notificationDurationMilliseconds = 3000
 
-export function ShowNotification (title, message, autoClose = true) {
+function closeNotification() {
+  return browser.notifications.clear(notificationId)
+}
+
+export default function showNotification(title, message, autoClose = true) {
   browser.notifications.create(notificationId, {
-    type: 'basic',
-    iconUrl: browser.extension.getURL('./dist/assets/icons/tab-icon-google.svg'),
-    title: title,
-    message: message
+    type: "basic",
+    iconUrl: browser.extension.getURL("./dist/assets/icons/tab-icon-google.svg"),
+    title,
+    message
   })
 
   if (autoClose) {
-    setTimeout(CloseNotification, 10000)
+    setTimeout(closeNotification, notificationDurationMilliseconds)
   }
-}
-
-export function CloseNotification () {
-  return browser.notifications.clear(notificationId)
 }

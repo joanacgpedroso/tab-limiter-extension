@@ -1,51 +1,61 @@
 /* global browser */
-export const maxTabsDefault = 5
+const maxTabsDefault = 5
 
 // Get the number of tabs in current window
-export function GetCurrentTabsNumber () {
-  return browser.tabs.query({
+async function getCurrentTabsOpenedNumber() {
+  const tabs = await browser.tabs.query({
     currentWindow: true
   })
-    .then((tabs) => {
-      return tabs.length
-    })
-}
 
-// Compare number of tabs with max allowed
-export async function IsOverMaxTabsLimit () {
-  const currentTabsNumber = await GetCurrentTabsNumber()
-  const maxTabsAllowedNumber = await GetMaxTabsSettings()
-  return (currentTabsNumber > maxTabsAllowedNumber)
+  return tabs.length
 }
 
 // Delete a tab
-export function DeleteTab (tab) {
+function closeTab(tab) {
   return browser.tabs.remove(tab.id)
 }
 
-// Initialize settings related with max tabs
-export function MaxTabSettings () {
-  GetMaxTabsSettings()
-    .then((maxTabs) => {
-      if (!maxTabs) {
-        return SetMaxTabsSettings(maxTabsDefault)
-      }
-    })
-}
-
 // Set new max tabs in settings
-export function SetMaxTabsSettings (tabNumber) {
-  let value = maxTabsDefault
-  if (tabNumber && tabNumber > 0) {
-    value = tabNumber
+function setMaxTabsSettings(newMax = undefined) {
+  let maxTabs = maxTabsDefault
+
+  if (newMax && newMax > 0) {
+    maxTabs = newMax
   }
+
   browser.storage.local.set({
-    maxTabs: value
+    // eslint-disable-next-line object-shorthand
+    "maxTabs": maxTabs
   })
+
+  return maxTabs
 }
 
 // Get max tabs in settings
-export function GetMaxTabsSettings () {
-  return browser.storage.local.get('maxTabs')
-    .then((settingsValue) => settingsValue.maxTabs)
+async function getMaxTabsSettings() {
+  const settings = await browser.storage.local.get("maxTabs")
+
+  return settings.maxTabs
 }
+
+// Compare number of tabs with max allowed
+async function isOverMaxTabsLimit() {
+  const currentTabsNumber = await getCurrentTabsOpenedNumber()
+  const maxTabsAllowedNumber = await getMaxTabsSettings()
+
+  return currentTabsNumber > maxTabsAllowedNumber
+}
+
+// Initialize settings related with max tabs
+async function initializeSettings() {
+  let maxTabs = await getMaxTabsSettings()
+
+  if (!maxTabs) {
+    maxTabs = setMaxTabsSettings()
+  }
+
+  return maxTabs
+}
+
+export { closeTab, isOverMaxTabsLimit, initializeSettings, getMaxTabsSettings, setMaxTabsSettings }
+

@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "hardcore"
+    ],
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "prettier/prettier": 0,
+        "semi": ["error", "never"]
+    }
+}

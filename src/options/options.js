@@ -1,80 +1,23 @@
+import showNotification from "../notifications.js"
+import { getMaxTabsSettings, setMaxTabsSettings } from "../tabs.js"
+import isNumber from "../utils/number.js"
 import "./styles.scss"
 
-import { ShowNotification } from '../notifications'
-import { GetMaxTabsSettings, SetMaxTabsSettings } from './../tabs'
-
-const form = document.querySelector('form')
+const form = document.querySelector("form")
 const submitButton = form.querySelector('button[type="submit"]')
 
 // Max Tabs Input Elements
 const maxTabsInputGroup = form.querySelector('[data-input-group="maxTabs"]')
-const maxTabsInput = maxTabsInputGroup.querySelector('#maxTabs')
+const maxTabsInput = maxTabsInputGroup.querySelector("#maxTabs")  
 const maxTabsErrorGroup = maxTabsInputGroup.querySelector('[data-element="error"]')
 const maxTabsErrorText = maxTabsErrorGroup.querySelector('[data-error-element="text"]')
 
-// Fill max tabs field with correct info when DM is loaded
-export async function UpdateFieldValues () {
-  maxTabsInput.value = await GetMaxTabsSettings()
-}
-document.addEventListener('DOMContentLoaded', UpdateFieldValues)
-
-
-export async function SaveSettings (event) {
-  event.preventDefault()
-  if (validateMaxTabsInput()) {
-    const maxTabsCount = maxTabsInput.value
-    await SetMaxTabsSettings(maxTabsCount)
-    await UpdateFieldValues()
-
-    await ShowNotification(
-      'Max Number of Tabs Updated',
-      `The max number of tabs that can be opened is now ${maxTabsCount}.`
-    )
-  }
-}
-form.addEventListener('submit', SaveSettings)
-
-
-// TODO: refactor this mess
-// Validate the max tabs input
-function validateMaxTabsInput() {
-  const maxTabsCount = maxTabsInput.value
-
-  let error = ""
-  if (!isNumber(maxTabsCount)) {
-    error = "Must be a number."
-  } else if (maxTabsCount <= 0) {
-    error = "Must be 1 or higher."
-  }
-
-  const isValid = (error === "")
-
-  if (!isValid) {
-    showError(error)
-    disableFormSubmission()
-  } else {
-    hideError()
-    enableFormSubmission()
-  }
-
-  return isValid
-}
-maxTabsInput.addEventListener('blur', validateMaxTabsInput)
-
-
-function showError(error) {
-  maxTabsInput.classList.add("input-error")
-
-  maxTabsErrorText.innerHTML = error
-  maxTabsErrorGroup.style.display = "block"
+// Fill max tabs field with correct info when DOM is loaded
+async function updateFieldValues () {
+  maxTabsInput.value = await getMaxTabsSettings()
 }
 
-function hideError() {
-  maxTabsInput.classList.remove("input-error")
-
-  maxTabsErrorText.innerHTML = ""
-  maxTabsErrorGroup.style.display = "none"
-}
+document.addEventListener("DOMContentLoaded", updateFieldValues)
 
 function toggleFormSubmission(shouldDisable) {
   form.dataset.valid = !shouldDisable
@@ -89,26 +32,87 @@ function enableFormSubmission() {
   toggleFormSubmission(false)
 }
 
+const errorInputCssClass = "input-error"
+
+function setMaxTabsInputError(error) {
+  maxTabsInput.classList.add(errorInputCssClass)
+
+  maxTabsErrorText.innerHTML = error
+  maxTabsErrorGroup.style.display = "block"
+  disableFormSubmission()
+}
+
+function setMaxTabsInputSuccess() {
+  maxTabsInput.classList.remove(errorInputCssClass)
+
+  maxTabsErrorText.innerHTML = ""
+  maxTabsErrorGroup.style.display = "none"
+  enableFormSubmission()
+}
+
+// Validate the max tabs input
+function validateMaxTabsInput() {
+  const maxTabsCount = maxTabsInput.value
+
+  if (!isNumber(maxTabsCount)) {
+    setMaxTabsInputError("Must be a number.")
+  } else if (maxTabsCount <= 0) {
+    setMaxTabsInputError("Must be 1 or higher.")
+  } else {
+    setMaxTabsInputSuccess()
+  }
+}
+
+maxTabsInput.addEventListener("blur", validateMaxTabsInput)
+
+function isFormValid() {
+  validateMaxTabsInput()
+
+  return form.dataset.valid
+}
+
+async function saveSettings(event) {
+  event.preventDefault()
+
+  if (isFormValid()) {
+    const maxTabsCount = maxTabsInput.value
+
+    await setMaxTabsSettings(maxTabsCount)
+    await updateFieldValues()
+
+    await showNotification(
+      "Max Number of Tabs Updated",
+      `The max number of tabs that can now be opened is ${maxTabsCount}.`
+    )
+  }
+}
+
+form.addEventListener("submit", saveSettings)
+
+function getMaxTabsInputValue() {
+  return maxTabsInput.value
+}
+
+function setMaxTabsInputValue(newValue) {
+  maxTabsInput.value = newValue
+}
 
 const stepper = form.querySelector('[data-element="stepper"]')
 
 stepper.querySelector('[data-stepper-button="decrease"').addEventListener("click", () => {
-  const value = maxTabsInput.value
+  const value = getMaxTabsInputValue()
+  
   if (isNumber(value) && value > 1) {
-    maxTabsInput.value--
+    setMaxTabsInputValue(Number(value) - 1)
     validateMaxTabsInput()
   }
 })
 
 stepper.querySelector('[data-stepper-button="increase"').addEventListener("click", () => {
-  const value = maxTabsInput.value
+  const value = getMaxTabsInputValue()
+
   if (isNumber(value)) {
-    maxTabsInput.value++
+    setMaxTabsInputValue(Number(value) + 1)
     validateMaxTabsInput()
   }
 })
-
-// Check if it's composed of digits only, with the option of being a negative number
-function isNumber(value) {
-  return /^-?\d+$/.test(value)
-}
