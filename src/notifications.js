@@ -9,7 +9,7 @@ function closeNotification() {
 export default function showNotification(title, message, autoClose = true) {
   browser.notifications.create(notificationId, {
     type: "basic",
-    iconUrl: browser.extension.getURL("./dist/assets/icons/tab-icon-google.svg"),
+    iconUrl: browser.extension.getURL("./dist/assets/icons/tabler-icons-folders-off.svg"),
     title,
     message
   })
