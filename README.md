@@ -2,6 +2,7 @@
 
 Tab Limiter is a Firefox extension that limits the number of tabs that can be opened in a window.
 
+![Extension blocking a 4th tab from being opened](others/images/limiting_tabs.png?raw=true "Tab Limiter Extension for Firefox")
 
 ## Why
 
