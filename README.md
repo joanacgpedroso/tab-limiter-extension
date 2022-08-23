@@ -13,7 +13,7 @@ This extension aims to correct that. Whenever the user tries to open more than a
 
 ## Usage
 
-Go to [Firefox Addon Page](https://addons.mozilla.org/en-US/firefox/addon/tab-limiter-extension/) and install the extension.
+Go to [Firefox Addon Page](https://addons.mozilla.org/firefox/addon/tab-limiter-extension/) and install the extension.
 
 You only need to have the extension activated for it to work. By default, the max number of open tabs allowed is 5, but you can change that number in the Options page.
 
