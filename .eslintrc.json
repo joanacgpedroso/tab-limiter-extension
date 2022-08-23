@@ -8,5 +8,8 @@
     "rules": {
         "prettier/prettier": 0,
         "semi": ["error", "never"]
-    }
+    },
+    "ignorePatterns": [
+        "webpack.config.js"
+    ]
 }

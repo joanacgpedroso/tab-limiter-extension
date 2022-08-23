@@ -9,8 +9,7 @@ module.exports = {
   },
   entry: {
     'background': './src/app.js',
-    'options/options': './src/options/options.js',
-    'options/styles': './src/options/styles.scss'
+    'options/options': './src/options/options.js'
   },
   output: {
     filename: '[name].js',

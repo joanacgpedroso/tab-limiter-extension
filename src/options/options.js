@@ -1,7 +1,7 @@
 import showNotification from "../notifications.js"
 import { getMaxTabsSettings, setMaxTabsSettings } from "../tabs.js"
 import isNumber from "../utils/number.js"
-import "./styles.scss"
+import "./options.scss"
 
 const form = document.querySelector("form")
 const submitButton = form.querySelector('button[type="submit"]')
@@ -37,7 +37,7 @@ const errorInputCssClass = "input-error"
 function setMaxTabsInputError(error) {
   maxTabsInput.classList.add(errorInputCssClass)
 
-  maxTabsErrorText.innerHTML = error
+  maxTabsErrorText.textContent = error
   maxTabsErrorGroup.style.display = "block"
   disableFormSubmission()
 }
@@ -45,7 +45,7 @@ function setMaxTabsInputError(error) {
 function setMaxTabsInputSuccess() {
   maxTabsInput.classList.remove(errorInputCssClass)
 
-  maxTabsErrorText.innerHTML = ""
+  maxTabsErrorText.textContent = ""
   maxTabsErrorGroup.style.display = "none"
   enableFormSubmission()
 }
